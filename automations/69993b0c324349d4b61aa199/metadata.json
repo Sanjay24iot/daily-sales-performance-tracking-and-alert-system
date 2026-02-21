@@ -1,0 +1,58 @@
+{
+  "automationId": "69993b0c324349d4b61aa199",
+  "automationName": "Unnamed Automation",
+  "version": "v1",
+  "mode": "multi-file",
+  "dependencies": [
+    {
+      "id": "1771650542877_14",
+      "name": "mysql2",
+      "version": "latest"
+    },
+    {
+      "id": "1771650542877_15",
+      "name": "pg",
+      "version": "latest"
+    },
+    {
+      "id": "1771650542877_16",
+      "name": "mongodb",
+      "version": "latest"
+    },
+    {
+      "id": "1771650542877_17",
+      "name": "google-spreadsheet",
+      "version": "latest"
+    },
+    {
+      "id": "1771650542877_18",
+      "name": "xlsx",
+      "version": "latest"
+    },
+    {
+      "id": "1771650542877_19",
+      "name": "fs",
+      "version": "latest"
+    },
+    {
+      "id": "1771650542877_20",
+      "name": "twilio",
+      "version": "latest"
+    }
+  ],
+  "environmentVariables": [
+    "SALES_DB_TYPE",
+    "SALES_DB_URI",
+    "SALES_DB_DATABASE",
+    "GOOGLE_SERVICE_ACCOUNT_JSON",
+    "GOOGLE_SHEET_ID",
+    "SALES_XLSX_FILE",
+    "SALES_DB_TABLE",
+    "SALES_DROP_PERCENT",
+    "SALES_TARGET",
+    "TWILIO_ACCOUNT_SID",
+    "TWILIO_AUTH_TOKEN",
+    "TWILIO_SMS_FROM"
+  ],
+  "syncedAt": "2026-02-21T05:44:18.737Z"
+}
