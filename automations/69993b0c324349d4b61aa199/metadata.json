@@ -1,7 +1,7 @@
 {
   "automationId": "69993b0c324349d4b61aa199",
   "automationName": "Unnamed Automation",
-  "version": "v1",
+  "version": "v2",
   "mode": "multi-file",
   "dependencies": [
     {
@@ -54,5 +54,5 @@
     "TWILIO_AUTH_TOKEN",
     "TWILIO_SMS_FROM"
   ],
-  "syncedAt": "2026-02-21T05:44:18.737Z"
+  "syncedAt": "2026-02-21T05:48:33.176Z"
 }

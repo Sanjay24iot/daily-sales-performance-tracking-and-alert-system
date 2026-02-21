@@ -1,12 +1,31 @@
-// Send alerts to managers by email and SMS using Turbotic/Builtin and Twilio
 const twilio = require("twilio")
 
 ;(async () => {
-  const managerContacts = getContext("managerContacts")
+  let managerContactsRaw = getContext("managerContacts")
+  let managerContacts = []
+
+  // Robust parsing with full coverage for invalid/falsy values
+  if (!managerContactsRaw || managerContactsRaw === "not_required" || managerContactsRaw === "" || managerContactsRaw === null || managerContactsRaw === undefined) {
+    console.log("Manager contacts config is missing, set to 'not_required', or empty. Skipping alerting. If you wish to send alerts, correctly configure contacts as JSON array.")
+    managerContacts = []
+  } else if (Array.isArray(managerContactsRaw)) {
+    managerContacts = managerContactsRaw
+  } else if (typeof managerContactsRaw === "string") {
+    try {
+      managerContacts = JSON.parse(managerContactsRaw)
+      if (!Array.isArray(managerContacts)) managerContacts = []
+    } catch (e) {
+      console.error("Could not parse manager contacts config as JSON. Skipping alerting. To fix: set contacts variable as JSON array.", managerContactsRaw)
+      managerContacts = []
+    }
+  } else {
+    managerContacts = []
+  }
+
   const analysis = getContext("salesAnalysis")
   if (!managerContacts || !Array.isArray(managerContacts) || managerContacts.length === 0) {
-    console.error("No manager contacts found. Cannot send alerts.")
-    process.exit(1)
+    console.log("No valid manager contacts found. Skipping alerting. To enable alerting, set contacts as a JSON array in config or upstream step.")
+    return
   }
   if (!analysis) {
     console.error("No analysis available to send alerts.")
